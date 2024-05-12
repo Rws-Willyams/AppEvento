@@ -13,25 +13,20 @@ const CadastroEventos = () => {
   const [nomeEvento, setNomeEvento] = useState('');
   const [dataEvento, setDataEvento] = useState('');
   const [localEvento, setLocalEvento] = useState('');
-  const [eventosCadastrados, setEventosCadastrado] = useState([
-      {
-         nome:' Nome do evento ',
-         data: ' Data do evento ',
-         local:' Local do evento '
-      }
-  ]);
-
+  const [eventosCadastrados, setEventosCadastrados] = useState([]);
+  
   const cadastrarEvento = () => {
-    
-    setNomeEvento('Nome do evento:', nomeEvento);
-    setDataEvento('Data do evento:', dataEvento);
-    setLocalEvento('Local do evento:', localEvento);
-    setNomeEvento('');
-    setDataEvento('');
-    setLocalEvento('');
+      adicionarEvento(nomeEvento, dataEvento, localEvento);
+      setNomeEvento('');
+      setDataEvento('');
+      setLocalEvento('');
   };
 
   
+  const adicionarEvento = (nome, data, local) => {
+  const novoEvento = { nomeEvento, dataEvento, localEvento };
+  setEventosCadastrados([...eventosCadastrados, novoEvento]);
+  };
 
   return (
      <ScrollView style={{marginTop:50}}>
@@ -58,15 +53,17 @@ const CadastroEventos = () => {
         />
 
         <BtnCadastro onPress={cadastrarEvento}>
-          <TxtCadastro>Cadastrar Evento</TxtCadastro>
+          <TxtCadastro onPress={adicionarEvento}>Cadastrar Evento</TxtCadastro> 
         </BtnCadastro>
 
         <TabelaCadastro>
           {eventosCadastrados.map((evento, index) => (
             <LinhaCadastro key={index}>
-              <TxtResultado>{`Nome do evento: ${evento.nome}`}</TxtResultado>
-              <TxtResultado>{`Data do evento: ${evento.data}`}</TxtResultado>
-              <TxtResultado>{`Local do evento: ${evento.local}`}</TxtResultado>
+              <TxtResultado>{`Nome do evento: ${evento.nomeEvento}`}</TxtResultado>
+              {'\n'}
+              <TxtResultado>{`Data do evento: ${evento.dataEvento}`}</TxtResultado>
+              {'\n'}
+              <TxtResultado>{`Local do evento: ${evento.localEvento}`}</TxtResultado>
             </LinhaCadastro>
           ))}
         </TabelaCadastro>

@@ -37,22 +37,22 @@ export const TxtCadastro = styled.Text`
 `;
 
 export const TabelaCadastro = styled.View`
-    width:85%;
-    height:200px;
-    background-color:gray;
-    padding:10px;
-    margin-top:20px;
+    width:100%;
 `;
 
 export const LinhaCadastro = styled.Text`
-   color:#fff;
-   padding:5px 6px;
-   font-size:18px;
-   
+    background-color:gray;
+    padding:15px;
+    margin:5px 20px;
+    border-radius:6px;
+    flex-direction:row;
+    justify-content:flex-start;
 `;
 
 export const TxtResultado = styled.Text`
-    margin:20px 5px;
+    font-size:18px;
+    
+    
 `;
 
 
